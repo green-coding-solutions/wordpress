@@ -76,8 +76,18 @@ To check how to run the measurements check out our [Documentation](https://docs.
 ## OpenEnergyBadge
 These badges show the energy cost for running this code on a single machine.
 
-- <a href="https://metrics.green-coding.berlin/stats.html?id=42a532c6-494c-4873-a288-dc9ef3d43a59"><img src="https://api.green-coding.berlin/v1/badge/single/42a532c6-494c-4873-a288-dc9ef3d43a59?metric=ml-estimated"></a>
-- <a href="https://metrics.green-coding.berlin/stats.html?id=42a532c6-494c-4873-a288-dc9ef3d43a59"><img src="https://api.green-coding.berlin/v1/badge/single/42a532c6-494c-4873-a288-dc9ef3d43a59?metric=RAPL"></a>
+- <a href="https://metrics.green-coding.io/stats.html?id=a6bd5efd-07ed-45c2-b3d9-7ec6b9c6e1ad">
+                    <img src="https://api.green-coding.io/v1/badge/single/a6bd5efd-07ed-45c2-b3d9-7ec6b9c6e1ad?metric=psu_carbon_ac_mcp_machine" loading="lazy">
+                </a>
+- <a href="https://metrics.green-coding.io/stats.html?id=a6bd5efd-07ed-45c2-b3d9-7ec6b9c6e1ad">
+                    <img src="https://api.green-coding.io/v1/badge/single/a6bd5efd-07ed-45c2-b3d9-7ec6b9c6e1ad?metric=psu_energy_ac_mcp_machine" loading="lazy">
+                </a>
+- <a href="https://metrics.green-coding.io/stats.html?id=a6bd5efd-07ed-45c2-b3d9-7ec6b9c6e1ad">
+                    <img src="https://api.green-coding.io/v1/badge/single/a6bd5efd-07ed-45c2-b3d9-7ec6b9c6e1ad?metric=embodied_carbon_share_machine" loading="lazy">
+                </a>
+- <a href="https://metrics.green-coding.io/stats.html?id=a6bd5efd-07ed-45c2-b3d9-7ec6b9c6e1ad">
+                    <img src="https://api.green-coding.io/v1/badge/single/a6bd5efd-07ed-45c2-b3d9-7ec6b9c6e1ad?metric=network_carbon_formula_global" loading="lazy">
+                </a>
 
 
 
