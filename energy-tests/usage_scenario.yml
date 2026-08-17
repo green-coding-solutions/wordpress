@@ -1,7 +1,7 @@
 ---
-name: Wordpress Data Puppeteer Scenario
+name: Wordpress Data Playwright Scenario
 author: Arne Tarara <arne@green-coding.berlin>
-description: Wordpress sample with pre-populated DB (pages and plugins) where a simple Puppeteer flow is executed
+description: Wordpress sample with pre-populated DB (pages and plugins) where a simple Playwright flow is executed
 
 compose-file: !include compose.yml
 
@@ -25,10 +25,11 @@ services:
     networks:
       - gcb-wordpress-mariadb-network
     folder-destination: "/tmp/repo"
-  gcb-puppeteer:
-    image: greencoding/puppeteer-chrome
+  gcb-playwright:
+    image: mcr.microsoft.com/playwright:jammy
     setup-commands:
-      - command: cp /tmp/repo/energy-tests/puppeteer-flow.js /var/www/puppeteer-flow.js
+      - command: cp /tmp/repo/energy-tests/playwright-flow.js /var/www/playwright-flow.js
+      - command: npm install playwright microtime --prefix /var/www
     networks:
       - gcb-wordpress-mariadb-network
     depends_on:
@@ -37,11 +38,11 @@ services:
 
 flow:
   - name: Check Website
-    container: gcb-puppeteer
+    container: gcb-playwright
     commands:
       - type: console
-        command: node /var/www/puppeteer-flow.js
-        note: Starting Puppeteer Flow
+        command: node /var/www/playwright-flow.js
+        note: Starting Playwright Flow
         log-stdout: true
         read-notes-stdout: true
         read-sci-stdout: true
@@ -49,8 +50,8 @@ flow:
         command: sleep 30
         note: Idling
       - type: console
-        command: node /var/www/puppeteer-flow.js
-        note: Starting Puppeteer Flow again
+        command: node /var/www/playwright-flow.js
+        note: Starting Playwright Flow again
         log-stdout: true
         read-notes-stdout: true
         read-sci-stdout: true
