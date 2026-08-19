@@ -28,6 +28,7 @@ services:
   gcb-playwright:
     image: mcr.microsoft.com/playwright:latest
     setup-commands:
+      - command: mkdir -p /var/www/
       - command: cp /tmp/repo/energy-tests/playwright-flow.js /var/www/playwright-flow.js
       - command: npm install playwright microtime --prefix /var/www
     networks:
