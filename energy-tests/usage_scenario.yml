@@ -27,6 +27,7 @@ services:
     folder-destination: "/tmp/repo"
   gcb-puppeteer:
     image: greencoding/puppeteer-chrome
+    entrypoint: tail -f /dev/null
     setup-commands:
       - command: cp /tmp/repo/energy-tests/puppeteer-flow.js /var/www/puppeteer-flow.js
     networks:
