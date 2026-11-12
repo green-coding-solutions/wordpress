@@ -1,0 +1,4 @@
+FROM mcr.microsoft.com/playwright:latest
+WORKDIR /var/www
+RUN npm install playwright microtime --prefix /var/www
+COPY ./playwright-flow.js /var/www/playwright-flow.js

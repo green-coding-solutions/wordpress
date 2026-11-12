@@ -26,12 +26,11 @@ services:
       - gcb-wordpress-mariadb-network
     folder-destination: "/tmp/repo"
   gcb-playwright:
-    image: mcr.microsoft.com/playwright:latest
+    build:
+      context: .
+      dockerfile: Dockerfile-playwright
+    image: gcb_wordpress_playwright
     entrypoint: tail -f /dev/null
-    setup-commands:
-      - command: mkdir -p /var/www/
-      - command: cp /tmp/repo/energy-tests/playwright-flow.js /var/www/playwright-flow.js
-      - command: npm install playwright microtime --prefix /var/www
     networks:
       - gcb-wordpress-mariadb-network
     depends_on:
