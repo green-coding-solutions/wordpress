@@ -33,7 +33,7 @@ const microtime = require("microtime");
 
     console.log(microtime.now()," Contact Page");
     await page.click("a[href='http://gcb-wordpress-apache:9875/?page_id=34']");
-    await page.waitForSelector(".wpcf7 form input");
+    await page.waitForSelector(".wpcf7 form input:visible"); // CF7 renders hidden inputs first, so only wait for visible ones
     console.log(microtime.now(),"GMT_SCI_R=1");
 
 
