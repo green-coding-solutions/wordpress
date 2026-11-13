@@ -12,11 +12,15 @@ port 9875 of the host as specified in the compose file.
 
 ## Prerequisites
 
-This example uses our [Puppeteer Chrome Container](https://hub.docker.com/r/greencoding/puppeteer-chrome) and will download
-it on the first measurement if you did not already pull it.
+The browser flow runs in a Playwright container that is built from `Dockerfile-playwright`
+on top of the official [Playwright image](https://mcr.microsoft.com/en-us/artifact/mar/playwright).
+The user journey itself lives in `playwright-flow.js`.
 
-If you do want to alter this container you can also build it yourself from [Puppeteer Chrome Container](https://github.com/green-coding-berlin/example-applications/tree/main/puppeteer-chrome).
-Only be sure to update the `usage_scenario.yml` with the local image identifier.
+Playwright and its npm dependencies are installed at build time, because the containers run in an
+`internal` Docker network without internet access during the measurement.
+
+The image tag and the `playwright` npm package must share the same version, otherwise the bundled
+browsers do not match. Change both via the `PLAYWRIGHT_VERSION` build arg in `Dockerfile-playwright`.
 
 ## Deploy with docker compose
 
@@ -60,7 +64,7 @@ docker system prune --volumes
 
 The MariaDB database takes a long time to boot.
 
-Therefore a `sleep 20` is in the `setup-commands` of the `usage_scenario.yml` so that Puppeteer will not  
+Therefore a `sleep 20` is in the `setup-commands` of the `usage_scenario.yml` so that Playwright will not
 get a database connection error from Wordpress.
 
 ## Changing the data in the admin
@@ -71,7 +75,7 @@ Go to http://gcb-wordpress-apache:9875/wp-admin/ and use:
 
 ## Running the measurement
 
-To check how to run the measurements check out our [Documentation](https://docs.green-coding.berlin)
+To check how to run the measurements check out our [Documentation](https://docs.green-coding.io)
 
 ## OpenEnergyBadge
 These badges show the energy cost for running this code on a single machine.
