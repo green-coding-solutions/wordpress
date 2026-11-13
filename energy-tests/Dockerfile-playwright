@@ -1,0 +1,7 @@
+# Image and npm package MUST share the same version, otherwise the bundled browsers do not match
+ARG PLAYWRIGHT_VERSION=1.65.0
+FROM mcr.microsoft.com/playwright:v${PLAYWRIGHT_VERSION}-noble
+ARG PLAYWRIGHT_VERSION
+WORKDIR /var/www
+RUN npm install playwright@${PLAYWRIGHT_VERSION} microtime --prefix /var/www
+COPY ./playwright-flow.js /var/www/playwright-flow.js
